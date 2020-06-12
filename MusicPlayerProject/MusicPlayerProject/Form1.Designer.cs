@@ -36,8 +36,8 @@
             this.savePlaylistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadPlaylistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sortPlaylistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.buttonToolStripSearch = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripTextBoxSearch = new System.Windows.Forms.ToolStripTextBox();
             this.createProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Player = new AxWMPLib.AxWindowsMediaPlayer();
             this.listBoxSongs = new System.Windows.Forms.ListBox();
@@ -49,8 +49,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
-            this.buttonToolStripMenuItem,
-            this.toolStripTextBox1,
+            this.buttonToolStripSearch,
+            this.toolStripTextBoxSearch,
             this.createProfileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -101,17 +101,18 @@
             this.sortPlaylistToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
             this.sortPlaylistToolStripMenuItem.Text = "Sort Playlist (Alphabetical Ascending)";
             // 
-            // buttonToolStripMenuItem
+            // buttonToolStripSearch
             // 
-            this.buttonToolStripMenuItem.Name = "buttonToolStripMenuItem";
-            this.buttonToolStripMenuItem.Size = new System.Drawing.Size(140, 23);
-            this.buttonToolStripMenuItem.Text = "Search Song in Playlist:";
+            this.buttonToolStripSearch.Name = "buttonToolStripSearch";
+            this.buttonToolStripSearch.Size = new System.Drawing.Size(140, 23);
+            this.buttonToolStripSearch.Text = "Search Song in Playlist:";
+            this.buttonToolStripSearch.Click += new System.EventHandler(this.buttonToolStripSearch_Click);
             // 
-            // toolStripTextBox1
+            // toolStripTextBoxSearch
             // 
-            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 23);
+            this.toolStripTextBoxSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBoxSearch.Name = "toolStripTextBoxSearch";
+            this.toolStripTextBoxSearch.Size = new System.Drawing.Size(100, 23);
             // 
             // createProfileToolStripMenuItem
             // 
@@ -159,8 +160,8 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
-        private System.Windows.Forms.ToolStripMenuItem buttonToolStripMenuItem;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxSearch;
+        private System.Windows.Forms.ToolStripMenuItem buttonToolStripSearch;
         private System.Windows.Forms.ToolStripMenuItem createProfileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem profilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem savePlaylistToolStripMenuItem;

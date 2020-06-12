@@ -14,7 +14,7 @@ namespace MusicPlayerProject
 {
     public partial class Form1 : Form
     {
-        BinarySearchTree<Song> songList = new BinarySearchTree<Song>();
+        BinarySearchTreeSong songList = new BinarySearchTreeSong();
         Song[] playList = new Song[20];
         int numSongs = 0;
         public Form1()
@@ -83,12 +83,26 @@ namespace MusicPlayerProject
         {
             listBoxSongs.Items.Clear();
 
-            for(int i = 0; i < playList.Length; i++)
+            for (int i = 0; i < playList.Length; i++)
             {
-                if(playList[i] != null)
+                if (playList[i] != null)
                 {
                     listBoxSongs.Items.Add(playList[i].getSongName());
                 }
+            }
+        }
+
+        private void buttonToolStripSearch_Click(object sender, EventArgs e)
+        {
+            Song searchSong = songList.Search(toolStripTextBoxSearch.Text);
+
+            if (searchSong == null)
+            {
+                MessageBox.Show("not found");
+            }
+            else
+            {
+                MessageBox.Show("Found song: " + searchSong.getSongName());
             }
         }
     }
