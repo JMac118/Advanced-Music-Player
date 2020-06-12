@@ -99,7 +99,7 @@ namespace MusicPlayerProject
 
             if (searchSong == null)
             {
-                toolStripStatusLabel.Text = "not found";
+                toolStripStatusLabel.Text = "Song: " + toolStripTextBoxSearch.Text + "not found";
             }
             else
             {
@@ -124,7 +124,7 @@ namespace MusicPlayerProject
             }
             else
             {
-                toolStripStatusLabel.Text = "Add a song using the 'Add a Song' menu item";
+                toolStripStatusLabel.Text = "Add a song using the 'Add new Song' menu item";
                 
             }
         }
@@ -137,7 +137,7 @@ namespace MusicPlayerProject
             }
             catch(Exception f)
             {
-                toolStripStatusLabel.Text = "Somthing went wrong\n" + f.Message;
+                toolStripStatusLabel.Text = "Something went wrong\n" + f.Message;
             }
         }
     }

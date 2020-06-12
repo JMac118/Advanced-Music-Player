@@ -39,7 +39,7 @@ namespace BinaryTree
                 }
                 else
                 {
-                    root.Search(songName);
+                    found = root.Search(songName);
                 }
             }
 

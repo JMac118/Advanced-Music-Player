@@ -30,11 +30,26 @@ namespace MusicPlayerProject.BinaryTree
         {
             if (String.CompareOrdinal(songValue.getSongName(), song.getSongName()) > 0)
             {
-                right.Insert(song);
+                if (right == null)
+                {
+                    right = new SongNode(song);
+                }
+                else
+                {
+                    right.Insert(song);
+                }
             }
             else if (String.CompareOrdinal(songValue.getSongName(), song.getSongName()) < 0)
             {
-                left.Insert(song);
+                if (left == null)
+                {
+                    left = new SongNode(song);
+                }
+                else
+                {
+                    left.Insert(song);
+                }
+
             }
             else if (String.CompareOrdinal(songValue.getSongName(), song.getSongName()) == 0)
             {
