@@ -20,6 +20,7 @@ namespace MusicPlayerProject
         public Form1()
         {
             InitializeComponent();
+            toolStripStatusLabel.Text = "Welcome";
         }
 
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
@@ -65,7 +66,7 @@ namespace MusicPlayerProject
             }
             else
             {
-                MessageBox.Show("Playlist is full");
+                toolStripStatusLabel.Text = "Playlist is full";
             }
         }
         private void PrintArray()
@@ -98,11 +99,45 @@ namespace MusicPlayerProject
 
             if (searchSong == null)
             {
-                MessageBox.Show("not found");
+                toolStripStatusLabel.Text = "not found";
             }
             else
             {
-                MessageBox.Show("Found song: " + searchSong.getSongName());
+                toolStripStatusLabel.Text = "Found song: " + searchSong.getSongName();
+            }
+        }
+
+        private void buttonPlay_Click(object sender, EventArgs e)
+        {
+            if(numSongs > 0)
+            {
+                int index = listBoxSongs.SelectedIndex;
+                if(index > -1)
+                {
+                    PlaySong(index);
+                }
+                else
+                {
+                    listBoxSongs.SelectedIndex = 0;
+                    PlaySong(0);
+                }
+            }
+            else
+            {
+                toolStripStatusLabel.Text = "Add a song using the 'Add a Song' menu item";
+                
+            }
+        }
+
+        private void PlaySong(int index)
+        {
+            try
+            {
+                Player.URL = playList[index].getUri();
+            }
+            catch(Exception f)
+            {
+                toolStripStatusLabel.Text = "Somthing went wrong\n" + f.Message;
             }
         }
     }

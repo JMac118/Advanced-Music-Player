@@ -41,8 +41,12 @@
             this.createProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Player = new AxWMPLib.AxWindowsMediaPlayer();
             this.listBoxSongs = new System.Windows.Forms.ListBox();
+            this.buttonPlay = new System.Windows.Forms.Button();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
+            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -123,11 +127,12 @@
             // Player
             // 
             this.Player.Enabled = true;
-            this.Player.Location = new System.Drawing.Point(12, 221);
+            this.Player.Location = new System.Drawing.Point(12, 171);
             this.Player.Name = "Player";
             this.Player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("Player.OcxState")));
             this.Player.Size = new System.Drawing.Size(406, 45);
             this.Player.TabIndex = 1;
+            this.Player.Visible = false;
             // 
             // listBoxSongs
             // 
@@ -137,11 +142,39 @@
             this.listBoxSongs.Size = new System.Drawing.Size(406, 186);
             this.listBoxSongs.TabIndex = 3;
             // 
+            // buttonPlay
+            // 
+            this.buttonPlay.Location = new System.Drawing.Point(13, 223);
+            this.buttonPlay.Name = "buttonPlay";
+            this.buttonPlay.Size = new System.Drawing.Size(75, 23);
+            this.buttonPlay.TabIndex = 4;
+            this.buttonPlay.Text = "Play";
+            this.buttonPlay.UseVisualStyleBackColor = true;
+            this.buttonPlay.Click += new System.EventHandler(this.buttonPlay_Click);
+            // 
+            // statusStrip
+            // 
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel});
+            this.statusStrip.Location = new System.Drawing.Point(0, 256);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(430, 22);
+            this.statusStrip.TabIndex = 5;
+            this.statusStrip.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel
+            // 
+            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(57, 17);
+            this.toolStripStatusLabel.Text = "Welcome";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(430, 278);
+            this.Controls.Add(this.statusStrip);
+            this.Controls.Add(this.buttonPlay);
             this.Controls.Add(this.listBoxSongs);
             this.Controls.Add(this.Player);
             this.Controls.Add(this.menuStrip1);
@@ -151,6 +184,8 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,6 +205,9 @@
         private System.Windows.Forms.ToolStripMenuItem addNewSongToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sortPlaylistToolStripMenuItem;
         private System.Windows.Forms.ListBox listBoxSongs;
+        private System.Windows.Forms.Button buttonPlay;
+        private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
     }
 }
 
