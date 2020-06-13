@@ -29,3 +29,4 @@ F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\obj\D
 F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\obj\Debug\MusicPlayerProject.pdb
 F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\obj\Debug\MusicPlayerProject.FormNewProfile.resources
 F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\obj\Debug\MusicPlayerProject.FormMusicPlayer.resources
+F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\obj\Debug\MusicPlayerProject.FormLoadProfile.resources

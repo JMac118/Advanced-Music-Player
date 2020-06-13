@@ -231,9 +231,35 @@ namespace MusicPlayerProject
             string[] arr = profiles.GetAllUserNames();
             for(int i = 0; i < arr.Length; i++)
             {
-                loadPlaylistToolStripMenuItem.DropDownItems.Add(arr[i]);
+                ToolStripMenuItem newStrip = new ToolStripMenuItem(arr[i]);
+                newStrip.Click += (sender, eventArgs) => LoadProfile(sender, eventArgs);
+
+                loadPlaylistToolStripMenuItem.DropDownItems.Add(newStrip);
             }
             
+        }
+
+        private void LoadProfile(object sender, EventArgs e)
+        {
+            ToolStripMenuItem strip = (ToolStripMenuItem)sender;
+            
+            using (FormLoadProfile loadProfile = new FormLoadProfile(strip.Text))
+            {
+                if(loadProfile.ShowDialog() == DialogResult.OK)
+                {
+                    User user = profiles.GetUser(strip.Text);
+                    bool result = passwordManager.IsPasswordMatch(loadProfile.GetPassword(), user.Salt, user.PasswordHash);
+                    if(result == true)
+                    {
+                        //load profile playlist
+                    }
+                    else
+                    {
+                        //password failed
+                    }
+                }
+            }
+
         }
     }
 }
