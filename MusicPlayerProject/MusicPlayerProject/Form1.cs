@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BinaryTree;
+using Sort;
 
 namespace MusicPlayerProject
 {
@@ -144,6 +145,27 @@ namespace MusicPlayerProject
         private void buttonStop_Click(object sender, EventArgs e)
         {
             Player.Ctlcontrols.stop();
+        }
+
+        private void sortPlaylistToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SongSort sorter = new SongSort();
+
+            Song[] temp = new Song[numSongs];
+
+            for(int i = 0; i < numSongs; i++)
+            {
+                temp[i] = playList[i];
+            }
+
+            temp = sorter.MergeSortSong(temp);
+
+            for(int i = 0; i < numSongs; i++)
+            {
+                playList[i] = temp[i];
+            }
+
+            RefreshList();
         }
     }
 }

@@ -103,6 +103,7 @@
             this.sortPlaylistToolStripMenuItem.Name = "sortPlaylistToolStripMenuItem";
             this.sortPlaylistToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
             this.sortPlaylistToolStripMenuItem.Text = "Sort Playlist (Alphabetical Ascending)";
+            this.sortPlaylistToolStripMenuItem.Click += new System.EventHandler(this.sortPlaylistToolStripMenuItem_Click);
             // 
             // buttonToolStripSearch
             // 
