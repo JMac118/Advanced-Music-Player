@@ -131,7 +131,7 @@
             // listBoxSongs
             // 
             this.listBoxSongs.FormattingEnabled = true;
-            this.listBoxSongs.Location = new System.Drawing.Point(12, 30);
+            this.listBoxSongs.Location = new System.Drawing.Point(12, 31);
             this.listBoxSongs.Name = "listBoxSongs";
             this.listBoxSongs.Size = new System.Drawing.Size(406, 186);
             this.listBoxSongs.TabIndex = 3;

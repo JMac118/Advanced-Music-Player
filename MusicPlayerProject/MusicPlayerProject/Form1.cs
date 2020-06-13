@@ -22,6 +22,7 @@ namespace MusicPlayerProject
         {
             InitializeComponent();
             toolStripStatusLabel.Text = "Welcome";
+            Player.PlayStateChange += (sender, eventArgs) => Player_PlayStateChange(sender, eventArgs);
         }
 
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
@@ -101,10 +102,19 @@ namespace MusicPlayerProject
             if (searchSong == null)
             {
                 toolStripStatusLabel.Text = "Song: " + toolStripTextBoxSearch.Text + "not found";
+                
             }
             else
             {
                 toolStripStatusLabel.Text = "Found song: " + searchSong.getSongName();
+                try
+                {
+                    Player.URL = searchSong.getUri();
+                }
+                catch (Exception f)
+                {
+                    toolStripStatusLabel.Text = "Something went wrong\n" + f.Message;
+                }
             }
         }
 
@@ -135,6 +145,7 @@ namespace MusicPlayerProject
             try
             {
                 Player.URL = playList[index].getUri();
+                toolStripStatusLabel.Text = "Currently playing: " + playList[index].getSongName();
             }
             catch(Exception f)
             {
@@ -166,6 +177,24 @@ namespace MusicPlayerProject
             }
 
             RefreshList();
+        }
+
+        //Code snippet for play next song taken from stack overflow
+        //https://stackoverflow.com/questions/19671308/c-sharp-media-player-wmp-automatic-next-song
+        //Mohamad Hedayati
+        private void Player_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
+        {
+            if (e.newState == 1)
+            {
+                if (listBoxSongs.SelectedIndex != listBoxSongs.Items.Count - 1)
+                {
+                    BeginInvoke(new Action(() =>
+                    {
+                        listBoxSongs.SelectedIndex = listBoxSongs.SelectedIndex + 1;
+                        PlaySong(listBoxSongs.SelectedIndex);
+                    }));
+                }
+            }
         }
     }
 }
