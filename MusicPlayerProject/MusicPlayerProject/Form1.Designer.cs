@@ -38,12 +38,12 @@
             this.sortPlaylistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonToolStripSearch = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBoxSearch = new System.Windows.Forms.ToolStripTextBox();
-            this.createProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Player = new AxWMPLib.AxWindowsMediaPlayer();
             this.listBoxSongs = new System.Windows.Forms.ListBox();
             this.buttonPlay = new System.Windows.Forms.Button();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.buttonStop = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
             this.statusStrip.SuspendLayout();
@@ -54,8 +54,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.buttonToolStripSearch,
-            this.toolStripTextBoxSearch,
-            this.createProfileToolStripMenuItem});
+            this.toolStripTextBoxSearch});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(430, 27);
@@ -91,13 +90,13 @@
             // 
             this.savePlaylistToolStripMenuItem.Name = "savePlaylistToolStripMenuItem";
             this.savePlaylistToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
-            this.savePlaylistToolStripMenuItem.Text = "Save Playlist";
+            this.savePlaylistToolStripMenuItem.Text = "Save Profile";
             // 
             // loadPlaylistToolStripMenuItem
             // 
             this.loadPlaylistToolStripMenuItem.Name = "loadPlaylistToolStripMenuItem";
             this.loadPlaylistToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
-            this.loadPlaylistToolStripMenuItem.Text = "Load Playlist";
+            this.loadPlaylistToolStripMenuItem.Text = "Load Profile";
             // 
             // sortPlaylistToolStripMenuItem
             // 
@@ -117,12 +116,6 @@
             this.toolStripTextBoxSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxSearch.Name = "toolStripTextBoxSearch";
             this.toolStripTextBoxSearch.Size = new System.Drawing.Size(100, 23);
-            // 
-            // createProfileToolStripMenuItem
-            // 
-            this.createProfileToolStripMenuItem.Name = "createProfileToolStripMenuItem";
-            this.createProfileToolStripMenuItem.Size = new System.Drawing.Size(90, 23);
-            this.createProfileToolStripMenuItem.Text = "Create Profile";
             // 
             // Player
             // 
@@ -168,11 +161,22 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(57, 17);
             this.toolStripStatusLabel.Text = "Welcome";
             // 
+            // buttonStop
+            // 
+            this.buttonStop.Location = new System.Drawing.Point(95, 223);
+            this.buttonStop.Name = "buttonStop";
+            this.buttonStop.Size = new System.Drawing.Size(75, 23);
+            this.buttonStop.TabIndex = 6;
+            this.buttonStop.Text = "Stop";
+            this.buttonStop.UseVisualStyleBackColor = true;
+            this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(430, 278);
+            this.Controls.Add(this.buttonStop);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.buttonPlay);
             this.Controls.Add(this.listBoxSongs);
@@ -197,7 +201,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBoxSearch;
         private System.Windows.Forms.ToolStripMenuItem buttonToolStripSearch;
-        private System.Windows.Forms.ToolStripMenuItem createProfileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem profilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem savePlaylistToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadPlaylistToolStripMenuItem;
@@ -208,6 +211,7 @@
         private System.Windows.Forms.Button buttonPlay;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
+        private System.Windows.Forms.Button buttonStop;
     }
 }
 

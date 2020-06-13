@@ -140,5 +140,10 @@ namespace MusicPlayerProject
                 toolStripStatusLabel.Text = "Something went wrong\n" + f.Message;
             }
         }
+
+        private void buttonStop_Click(object sender, EventArgs e)
+        {
+            Player.Ctlcontrols.stop();
+        }
     }
 }
