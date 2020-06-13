@@ -1,6 +1,6 @@
 ﻿namespace MusicPlayerProject
 {
-    partial class Form1
+    partial class FormMusicPlayer
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMusicPlayer));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.profilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewSongToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.savePlaylistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadPlaylistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sortPlaylistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonToolStripSearch = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,7 +66,7 @@
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.profilesToolStripMenuItem,
             this.addNewSongToolStripMenuItem,
-            this.savePlaylistToolStripMenuItem,
+            this.saveProfileToolStripMenuItem,
             this.loadPlaylistToolStripMenuItem,
             this.sortPlaylistToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
@@ -86,11 +86,12 @@
             this.addNewSongToolStripMenuItem.Text = "Add New Song";
             this.addNewSongToolStripMenuItem.Click += new System.EventHandler(this.addNewSongToolStripMenuItem_Click);
             // 
-            // savePlaylistToolStripMenuItem
+            // saveProfileToolStripMenuItem
             // 
-            this.savePlaylistToolStripMenuItem.Name = "savePlaylistToolStripMenuItem";
-            this.savePlaylistToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
-            this.savePlaylistToolStripMenuItem.Text = "Save Profile";
+            this.saveProfileToolStripMenuItem.Name = "saveProfileToolStripMenuItem";
+            this.saveProfileToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
+            this.saveProfileToolStripMenuItem.Text = "Save Profile";
+            this.saveProfileToolStripMenuItem.Click += new System.EventHandler(this.saveProfileToolStripMenuItem_Click);
             // 
             // loadPlaylistToolStripMenuItem
             // 
@@ -172,7 +173,7 @@
             this.buttonStop.UseVisualStyleBackColor = true;
             this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
             // 
-            // Form1
+            // FormMusicPlayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -184,7 +185,7 @@
             this.Controls.Add(this.Player);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "FormMusicPlayer";
             this.Text = "JMAC Music Player";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -203,7 +204,7 @@
         private System.Windows.Forms.ToolStripTextBox toolStripTextBoxSearch;
         private System.Windows.Forms.ToolStripMenuItem buttonToolStripSearch;
         private System.Windows.Forms.ToolStripMenuItem profilesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem savePlaylistToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveProfileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadPlaylistToolStripMenuItem;
         private AxWMPLib.AxWindowsMediaPlayer Player;
         private System.Windows.Forms.ToolStripMenuItem addNewSongToolStripMenuItem;

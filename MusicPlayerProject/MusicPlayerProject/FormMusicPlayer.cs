@@ -10,19 +10,33 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BinaryTree;
 using Sort;
+using Security;
 
 namespace MusicPlayerProject
 {
-    public partial class Form1 : Form
+    public partial class FormMusicPlayer : Form
     {
+        public Form thisForm;
+        UserRepository profiles = new UserRepository();
+        static PasswordManager passwordManager = new PasswordManager();
+        static string salt = null;
+        static string passwordHash = passwordManager.GeneratePasswordHash("admin", out salt);
+        User user = new User
+        {
+            UserId = "admin",
+            PasswordHash = passwordHash,
+            Salt = salt
+        };
+
         BinarySearchTreeSong songList = new BinarySearchTreeSong();
         Song[] playList = new Song[20];
         int numSongs = 0;
-        public Form1()
+        public FormMusicPlayer()
         {
             InitializeComponent();
             toolStripStatusLabel.Text = "Welcome";
             Player.PlayStateChange += (sender, eventArgs) => Player_PlayStateChange(sender, eventArgs);
+            thisForm = System.Windows.Forms.Form.ActiveForm;
         }
 
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
@@ -195,6 +209,31 @@ namespace MusicPlayerProject
                     }));
                 }
             }
+        }
+
+        private void saveProfileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (FormNewProfile saveProfile = new FormNewProfile())
+            {
+                if (saveProfile.ShowDialog() == DialogResult.OK)
+                {
+                    User newUser = new User();
+                    newUser.UserId = saveProfile.GetUsername();
+                    newUser.PasswordHash = passwordManager.GeneratePasswordHash(saveProfile.GetUsername(), out salt);
+                    profiles.AddUser(newUser);
+                }
+            }
+
+            RefreshProfiles();
+        }
+        private void RefreshProfiles()
+        {
+            string[] arr = profiles.GetAllUserNames();
+            for(int i = 0; i < arr.Length; i++)
+            {
+                loadPlaylistToolStripMenuItem.DropDownItems.Add(arr[i]);
+            }
+            
         }
     }
 }

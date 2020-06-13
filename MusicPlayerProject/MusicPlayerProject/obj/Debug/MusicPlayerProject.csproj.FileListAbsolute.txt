@@ -22,9 +22,10 @@ F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\obj\D
 F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\obj\Debug\Interop.WMPLib.dll
 F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\obj\Debug\AxInterop.WMPLib.dll
 F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\obj\Debug\MusicPlayerProject.csproj.ResolveComReference.cache
-F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\obj\Debug\MusicPlayerProject.Form1.resources
 F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\obj\Debug\MusicPlayerProject.Properties.Resources.resources
 F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\obj\Debug\MusicPlayerProject.csproj.GenerateResource.cache
 F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\obj\Debug\MusicPlayerProject.csproj.CoreCompileInputs.cache
 F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\obj\Debug\MusicPlayerProject.exe
 F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\obj\Debug\MusicPlayerProject.pdb
+F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\obj\Debug\MusicPlayerProject.FormNewProfile.resources
+F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\obj\Debug\MusicPlayerProject.FormMusicPlayer.resources
