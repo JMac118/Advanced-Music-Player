@@ -229,6 +229,10 @@ namespace MusicPlayerProject
                 newStrip.Click += (sender, eventArgs) => LoadProfile(sender, eventArgs);
 
                 loadPlaylistToolStripMenuItem.DropDownItems.Add(newStrip);
+
+                //TODO Create profile class for serialization
+                //Profile class can have User object and List of Songs
+                //After creating profile object serialize it and write to a file
             }
             
         }
@@ -247,12 +251,15 @@ namespace MusicPlayerProject
                     if(result == true)
                     {
                         //load profile playlist
-                        MessageBox.Show("Confirmed profile: " + loadProfile.GetPassword() + user.Salt + user.PasswordHash);
+                        MessageBox.Show("Confirmed profile: " + strip.Text);
+
+                        toolStripStatusLabel.Text = "Welcome " + strip.Text;
+
                     }
                     else
                     {
                         //password failed
-                        MessageBox.Show("Password failed: " + loadProfile.GetPassword() + user.Salt + user.PasswordHash);
+                        MessageBox.Show("Password failed for profile: " + strip.Text);
                     }
                 }
             }
