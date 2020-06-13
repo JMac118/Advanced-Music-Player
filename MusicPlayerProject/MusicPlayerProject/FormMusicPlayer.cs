@@ -19,14 +19,7 @@ namespace MusicPlayerProject
         public Form thisForm;
         UserRepository profiles = new UserRepository();
         static PasswordManager passwordManager = new PasswordManager();
-        static string salt = null;
-        static string passwordHash = passwordManager.GeneratePasswordHash("admin", out salt);
-        User user = new User
-        {
-            UserId = "admin",
-            PasswordHash = passwordHash,
-            Salt = salt
-        };
+        string salt = null;
 
         BinarySearchTreeSong songList = new BinarySearchTreeSong();
         Song[] playList = new Song[20];
@@ -219,7 +212,8 @@ namespace MusicPlayerProject
                 {
                     User newUser = new User();
                     newUser.UserId = saveProfile.GetUsername();
-                    newUser.PasswordHash = passwordManager.GeneratePasswordHash(saveProfile.GetUsername(), out salt);
+                    newUser.PasswordHash = passwordManager.GeneratePasswordHash(saveProfile.GetPassword(), out salt);
+                    newUser.Salt = salt;
                     profiles.AddUser(newUser);
                 }
             }
@@ -248,14 +242,17 @@ namespace MusicPlayerProject
                 if(loadProfile.ShowDialog() == DialogResult.OK)
                 {
                     User user = profiles.GetUser(strip.Text);
+
                     bool result = passwordManager.IsPasswordMatch(loadProfile.GetPassword(), user.Salt, user.PasswordHash);
                     if(result == true)
                     {
                         //load profile playlist
+                        MessageBox.Show("Confirmed profile: " + loadProfile.GetPassword() + user.Salt + user.PasswordHash);
                     }
                     else
                     {
                         //password failed
+                        MessageBox.Show("Password failed: " + loadProfile.GetPassword() + user.Salt + user.PasswordHash);
                     }
                 }
             }
