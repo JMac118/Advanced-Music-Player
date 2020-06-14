@@ -5,24 +5,42 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Collections;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using Security;
 using MusicPlayer;
 
-namespace MusicPlayerProject.IO
+namespace IO
 {
-    class IO
+    class BinaryIO
     {
-        static void Serialize()
+        public void BinaryWrite(string filename, Song[] arr, User user)
         {
 
-            // TODO create function to serialize data to file
-            /*Dictionary<User, LinkedList<Song>> profileData = new Dictionary<User, LinkedList<Song>>();
+            Stream stream = File.Open(filename, FileMode.Create);
+            BinaryFormatter formatter = new BinaryFormatter();
 
-            profileData.Add()*/
+            formatter.Serialize(stream, user);
+            formatter.Serialize(stream, arr);
+            stream.Close();
 
+        }
 
+        public Profile BinaryRead(string filename)
+        {
+            User user;
+            Song[] arr;
+
+            Stream stream = File.Open(filename, FileMode.Open);
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            user = (User)formatter.Deserialize(stream);
+            arr = (Song[])formatter.Deserialize(stream);
+            stream.Close();
+
+            Profile profile = new Profile(user, arr);
+
+            return profile;
         }
     }
 }

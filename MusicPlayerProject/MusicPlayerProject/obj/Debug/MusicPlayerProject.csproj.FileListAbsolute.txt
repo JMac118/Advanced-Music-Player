@@ -30,3 +30,12 @@ F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\obj\D
 F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\obj\Debug\MusicPlayerProject.FormNewProfile.resources
 F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\obj\Debug\MusicPlayerProject.FormMusicPlayer.resources
 F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\obj\Debug\MusicPlayerProject.FormLoadProfile.resources
+F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\bin\Debug\CsvHelper.dll
+F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\bin\Debug\System.Threading.Tasks.Extensions.dll
+F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\bin\Debug\CsvHelper.xml
+F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\bin\Debug\System.Threading.Tasks.Extensions.xml
+F:\Programming\Advanced-Music-Player\MusicPlayerProject\MusicPlayerProject\obj\Debug\MusicPlayerProject.csproj.CopyComplete

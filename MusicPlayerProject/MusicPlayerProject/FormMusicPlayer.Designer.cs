@@ -44,6 +44,8 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.buttonStop = new System.Windows.Forms.Button();
+            this.exportPlaylistcsvToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importPlaylistcsvToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
             this.statusStrip.SuspendLayout();
@@ -68,7 +70,9 @@
             this.addNewSongToolStripMenuItem,
             this.saveProfileToolStripMenuItem,
             this.loadPlaylistToolStripMenuItem,
-            this.sortPlaylistToolStripMenuItem});
+            this.sortPlaylistToolStripMenuItem,
+            this.exportPlaylistcsvToolStripMenuItem,
+            this.importPlaylistcsvToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(50, 23);
             this.toolStripMenuItem1.Text = "Menu";
@@ -173,6 +177,20 @@
             this.buttonStop.UseVisualStyleBackColor = true;
             this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
             // 
+            // exportPlaylistcsvToolStripMenuItem
+            // 
+            this.exportPlaylistcsvToolStripMenuItem.Name = "exportPlaylistcsvToolStripMenuItem";
+            this.exportPlaylistcsvToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
+            this.exportPlaylistcsvToolStripMenuItem.Text = "Export Playlist (.csv)";
+            this.exportPlaylistcsvToolStripMenuItem.Click += new System.EventHandler(this.exportPlaylistcsvToolStripMenuItem_Click);
+            // 
+            // importPlaylistcsvToolStripMenuItem
+            // 
+            this.importPlaylistcsvToolStripMenuItem.Name = "importPlaylistcsvToolStripMenuItem";
+            this.importPlaylistcsvToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
+            this.importPlaylistcsvToolStripMenuItem.Text = "Import Playlist (.csv)";
+            this.importPlaylistcsvToolStripMenuItem.Click += new System.EventHandler(this.importPlaylistcsvToolStripMenuItem_Click);
+            // 
             // FormMusicPlayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -187,6 +205,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMusicPlayer";
             this.Text = "JMAC Music Player";
+            this.Load += new System.EventHandler(this.FormMusicPlayer_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
@@ -214,6 +233,8 @@
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         private System.Windows.Forms.Button buttonStop;
+        private System.Windows.Forms.ToolStripMenuItem exportPlaylistcsvToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importPlaylistcsvToolStripMenuItem;
     }
 }
 

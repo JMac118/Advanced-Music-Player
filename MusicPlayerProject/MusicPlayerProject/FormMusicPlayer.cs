@@ -1,4 +1,9 @@
-﻿using MusicPlayer;
+﻿/*
+ * Programmed by Joshua Macaulay
+ * 30008704
+ */
+
+using MusicPlayer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +16,10 @@ using System.Windows.Forms;
 using BinaryTree;
 using Sort;
 using Security;
+using System.IO;
+using CsvHelper;
+using System.Globalization;
+using IO;
 
 namespace MusicPlayerProject
 {
@@ -59,6 +68,7 @@ namespace MusicPlayerProject
             RefreshList();
         }
 
+        //adds a song to the playlist
         private void AddPlayListSong(Song newSong)
         {
             if (numSongs < playList.Length)
@@ -78,17 +88,7 @@ namespace MusicPlayerProject
                 toolStripStatusLabel.Text = "Playlist is full";
             }
         }
-        private void PrintArray()
-        {
-            //Console.WriteLine(playList[19].ToString());
-            /*for(int i = 19; i > 0; i --)
-            {
-                if(playList[i] != null)
-                {
-                    Console.WriteLine(i + playList[i].ToString());
-                }
-            }*/
-        }
+        //refreshes the listbox with the contents of playlist
         private void RefreshList()
         {
             listBoxSongs.Items.Clear();
@@ -102,6 +102,7 @@ namespace MusicPlayerProject
             }
         }
 
+        //search bar function, searches the binary tree for the song and plays it if it exists
         private void buttonToolStripSearch_Click(object sender, EventArgs e)
         {
             Song searchSong = songList.Search(toolStripTextBoxSearch.Text);
@@ -125,12 +126,13 @@ namespace MusicPlayerProject
             }
         }
 
+        //button method for playing selected song or the first song in list
         private void buttonPlay_Click(object sender, EventArgs e)
         {
             if(numSongs > 0)
             {
                 int index = listBoxSongs.SelectedIndex;
-                if(index > -1)
+                if((index > -1) && (index <= numSongs))
                 {
                     PlaySong(index);
                 }
@@ -147,6 +149,7 @@ namespace MusicPlayerProject
             }
         }
 
+        //function to play a song based on its index position in the list
         private void PlaySong(int index)
         {
             try
@@ -160,11 +163,13 @@ namespace MusicPlayerProject
             }
         }
 
+        //simple button method to stop the music
         private void buttonStop_Click(object sender, EventArgs e)
         {
             Player.Ctlcontrols.stop();
         }
 
+        //toolstrip button method to merge sort the playlist
         private void sortPlaylistToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SongSort sorter = new SongSort();
@@ -204,6 +209,7 @@ namespace MusicPlayerProject
             }
         }
 
+        //toolstrip button to create a new profile
         private void saveProfileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (FormNewProfile saveProfile = new FormNewProfile())
@@ -215,11 +221,37 @@ namespace MusicPlayerProject
                     newUser.PasswordHash = passwordManager.GeneratePasswordHash(saveProfile.GetPassword(), out salt);
                     newUser.Salt = salt;
                     profiles.AddUser(newUser);
+
+                    WriteProfileToFile(newUser.UserId);
                 }
             }
 
             RefreshProfiles();
         }
+
+        //function that writes the user and playlist to a binary file
+        private void WriteProfileToFile(string profileName)
+        {
+            string filename = profileName + ".bin";
+            BinaryIO io = new BinaryIO();
+            io.BinaryWrite(filename, playList, profiles.GetUser(profileName));
+        }
+        //function that reads a user and playlist from a binary file
+        private void ReadProfileFromFile(string profileName)
+        {
+            string filename = profileName + ".bin";
+            BinaryIO io = new BinaryIO();
+            Profile profile = io.BinaryRead(filename);
+            
+            playList = profile.List;
+            numSongs = playList.Length;
+
+            FillBinaryTree();
+
+            RefreshList();
+        }
+
+        //function to refresh the toolstrip menu items for profiles
         private void RefreshProfiles()
         {
             string[] arr = profiles.GetAllUserNames();
@@ -230,13 +262,11 @@ namespace MusicPlayerProject
 
                 loadPlaylistToolStripMenuItem.DropDownItems.Add(newStrip);
 
-                //TODO Create profile class for serialization
-                //Profile class can have User object and List of Songs
-                //After creating profile object serialize it and write to a file
             }
             
         }
 
+        //toolstrip menu button to load a profile
         private void LoadProfile(object sender, EventArgs e)
         {
             ToolStripMenuItem strip = (ToolStripMenuItem)sender;
@@ -253,6 +283,8 @@ namespace MusicPlayerProject
                         //load profile playlist
                         MessageBox.Show("Confirmed profile: " + strip.Text);
 
+                        ReadProfileFromFile(strip.Text);
+
                         toolStripStatusLabel.Text = "Welcome " + strip.Text;
 
                     }
@@ -265,5 +297,89 @@ namespace MusicPlayerProject
             }
 
         }
+
+        //toolstrip menu item to save a playlist to a csv file using CsvHelper
+        private void exportPlaylistcsvToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog save = new SaveFileDialog();
+            save.DefaultExt = ".csv";
+            save.ShowDialog();
+
+
+            using (var writer = new StreamWriter(save.FileName))
+            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csv.WriteRecords(playList);
+            }
+        }
+
+        //toolstrip menu item to load a playlist from a csv file using CsvHelper
+        private void importPlaylistcsvToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog load = new OpenFileDialog();
+            load.DefaultExt = ".csv";
+            load.ShowDialog();
+
+            using (var reader = new StreamReader(load.FileName))
+            {
+                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                {
+                    csv.Configuration.PrepareHeaderForMatch = (string header, int index) => header.ToLower();
+                    var records = csv.GetRecords<Song>();
+
+                    var arr = records.ToArray();
+
+                    numSongs = 0;
+                    for (int i = 0; i < arr.Length; i++)
+                    {
+                        try
+                        {
+                            if (arr[i].getUri() != null && !arr[i].getUri().Equals(""))
+                            {
+                                playList[i] = arr[i];
+                                numSongs++;
+                            }
+                        }
+                        catch(Exception f)
+                        {
+                            //Caught empty song
+                        }
+                    }
+
+                    FillBinaryTree();
+                    RefreshList();
+                }
+            }
+
+        }
+
+        //Load method, once form it initially loaded, will scan directory for .bin files to load into profiles
+        private void FormMusicPlayer_Load(object sender, EventArgs e)
+        {
+            string[] files = System.IO.Directory.GetFiles(Directory.GetCurrentDirectory(), "*.bin");
+
+            for(int i = 0; i < files.Length; i++)
+            {
+                BinaryIO io = new BinaryIO();
+                Profile profile = io.BinaryRead(files[i]);
+                profiles.AddUser(profile.User);
+                RefreshProfiles();
+            }
+        }
+
+        //function to refill the binary tree with contents of playlist
+        private void FillBinaryTree()
+        {
+            songList = new BinarySearchTreeSong();
+
+            for(int i = 0; i < numSongs; i++)
+            {
+                if (playList[i] != null)
+                {
+                    songList.Insert(playList[i]);
+                }
+            }
+        }
     }
 }
+

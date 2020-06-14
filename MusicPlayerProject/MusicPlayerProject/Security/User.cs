@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Security
 {
+    [Serializable()]
     class User
     {
         public string UserId { get; set; }
