@@ -33,6 +33,7 @@ namespace MusicPlayerProject
         BinarySearchTreeSong songList = new BinarySearchTreeSong();
         Song[] playList = new Song[20];
         int numSongs = 0;
+        bool stopped = true;
         public FormMusicPlayer()
         {
             InitializeComponent();
@@ -131,6 +132,7 @@ namespace MusicPlayerProject
         {
             if(numSongs > 0)
             {
+                stopped = false;
                 int index = listBoxSongs.SelectedIndex;
                 if((index > -1) && (index <= numSongs))
                 {
@@ -166,7 +168,9 @@ namespace MusicPlayerProject
         //simple button method to stop the music
         private void buttonStop_Click(object sender, EventArgs e)
         {
+            stopped = true;
             Player.Ctlcontrols.stop();
+            toolStripStatusLabel.Text = "Music has been stopped";
         }
 
         //toolstrip button method to merge sort the playlist
@@ -196,7 +200,7 @@ namespace MusicPlayerProject
         //Mohamad Hedayati
         private void Player_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
         {
-            if (e.newState == 1)
+            if (e.newState == 1 && stopped == false)
             {
                 if (listBoxSongs.SelectedIndex != listBoxSongs.Items.Count - 1)
                 {

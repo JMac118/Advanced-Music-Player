@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMusicPlayer));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.profilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewSongToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadPlaylistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,7 +65,6 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.profilesToolStripMenuItem,
             this.addNewSongToolStripMenuItem,
             this.saveProfileToolStripMenuItem,
             this.loadPlaylistToolStripMenuItem,
@@ -76,12 +74,6 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(50, 23);
             this.toolStripMenuItem1.Text = "Menu";
-            // 
-            // profilesToolStripMenuItem
-            // 
-            this.profilesToolStripMenuItem.Name = "profilesToolStripMenuItem";
-            this.profilesToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
-            this.profilesToolStripMenuItem.Text = "Profiles";
             // 
             // addNewSongToolStripMenuItem
             // 
@@ -222,7 +214,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBoxSearch;
         private System.Windows.Forms.ToolStripMenuItem buttonToolStripSearch;
-        private System.Windows.Forms.ToolStripMenuItem profilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveProfileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadPlaylistToolStripMenuItem;
         private AxWMPLib.AxWindowsMediaPlayer Player;
